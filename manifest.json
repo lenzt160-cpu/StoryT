@@ -1,0 +1,172 @@
+{
+  "id": "/",
+  "name": "StoryT",
+  "short_name": "StoryT",
+  "description": "Short tea and gossip videos. Spill your own story or gossip about a photo or video, follow your favorite creators, message them, react and comment.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "portrait",
+  "background_color": "#140D17",
+  "theme_color": "#140D17",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": [
+    "social",
+    "entertainment",
+    "lifestyle"
+  ],
+  "prefer_related_applications": false,
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "icons": [
+    {
+      "src": "/icon-48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-feed.png",
+      "sizes": "800x1640",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Swipe tea and gossip videos, react and follow creators"
+    },
+    {
+      "src": "/screenshot-channel.png",
+      "sizes": "800x1640",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Your Channel: every new video from creators you follow"
+    },
+    {
+      "src": "/screenshot-creator.png",
+      "sizes": "800x1640",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Creator pages with a Follow button"
+    },
+    {
+      "src": "/screenshot-wide.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "StoryT on a computer"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Spill the tea",
+      "short_name": "Spill",
+      "description": "Post a new Tea or Gossip video",
+      "url": "/?action=spill",
+      "icons": [
+        {
+          "src": "/icon-96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "My Channel",
+      "short_name": "Channel",
+      "description": "New videos from creators you follow",
+      "url": "/?action=channel",
+      "icons": [
+        {
+          "src": "/icon-96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Messages",
+      "short_name": "Messages",
+      "description": "Your conversations",
+      "url": "/?action=messages",
+      "icons": [
+        {
+          "src": "/icon-96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}

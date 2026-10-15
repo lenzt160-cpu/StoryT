@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><radialGradient id="bgG" cx="35%" cy="25%" r="85%"><stop offset="0" stop-color="#3A2742"/><stop offset="1" stop-color="#140D17"/></radialGradient><linearGradient id="mugG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6BA57"/><stop offset="1" stop-color="#D9862A"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="url(#bgG)"/><g transform="translate(8 6)">  <!-- shadow -->
+  <ellipse cx="248" cy="412" rx="118" ry="16" fill="#000" opacity=".28"/>
+  <!-- steam -->
+  <g fill="none" stroke="#F7EFE7" stroke-width="17" stroke-linecap="round">
+    <path d="M200 206 C178 178 222 160 200 126" opacity=".75"/>
+    <path d="M248 200 C224 166 272 146 248 100"/>
+    <path d="M296 206 C274 178 318 160 296 126" opacity=".75"/>
+  </g>
+  <!-- handle -->
+  <path d="M330 272 C404 262 410 372 322 374" fill="none" stroke="url(#mugG)" stroke-width="28" stroke-linecap="round"/>
+  <!-- mug body -->
+  <path d="M152 244 H344 L330 380 C328 398 314 408 296 408 H200 C182 408 168 398 166 380 Z" fill="url(#mugG)"/>
+  <!-- highlight -->
+  <path d="M182 268 L192 378" stroke="#FFF3DA" stroke-width="12" stroke-linecap="round" opacity=".45"/>
+  <!-- rim + tea -->
+  <ellipse cx="248" cy="244" rx="96" ry="20" fill="#C47622"/>
+  <ellipse cx="248" cy="246" rx="82" ry="13" fill="#5A2E0E"/>
+  <!-- tea bag string + tag -->
+  <path d="M214 246 C204 262 176 268 162 300" fill="none" stroke="#F7EFE7" stroke-width="5" stroke-linecap="round"/>
+  <g transform="rotate(-10 150 326)">
+    <rect x="124" y="296" width="54" height="62" rx="9" fill="#F7EFE7"/>
+    <text x="151" y="346" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="44" fill="#140D17">T</text>
+  </g></g></svg>
