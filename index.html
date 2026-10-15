@@ -211,10 +211,14 @@ textarea{min-height:52px;max-height:200px}
 .seg.slim{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .seg.slim button{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:10px;font-weight:700}
 .seg.slim button[aria-pressed="true"]{border-color:var(--tea);box-shadow:inset 0 0 0 1px var(--tea)}
-.pick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pick button{border:0;border-radius:18px;padding:30px 12px;font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.02em}
-.pick .tea{background:var(--tea);color:var(--tea-ink)}
-.pick .gossip{background:var(--fg);color:var(--bg)}
+.pick{display:flex;gap:10px;justify-content:center;padding:6px 0 4px}
+.pick button{display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;border-radius:999px;padding:12px 22px;font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:-.01em;
+  box-shadow:0 6px 18px -8px rgba(0,0,0,.6);transition:transform .15s ease, box-shadow .15s ease}
+.pick button span{font-size:19px;line-height:1}
+.pick button:hover{transform:translateY(-1px)}
+.pick button:active{transform:scale(.95)}
+.pick .tea{background:linear-gradient(180deg,#F4BC5E,var(--tea));color:var(--tea-ink)}
+.pick .gossip{background:linear-gradient(180deg,#3A2A42,var(--surface-2));color:var(--fg);border-color:var(--line)}
 .field{display:flex;flex-direction:column;gap:8px}
 .field > label,.field > .flabel{font-weight:600;font-size:14px}
 .capture{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -338,8 +342,8 @@ textarea{min-height:52px;max-height:200px}
       <div class="sheet-head"><h2 id="pTitle">Spill the tea</h2><button class="x" data-close aria-label="Close">✕</button></div>
       <form class="sheet-body" id="pForm">
         <div class="pick" id="pickType">
-          <button type="button" class="tea" id="goTea">Tea</button>
-          <button type="button" class="gossip" id="goGossip">Gossip</button>
+          <button type="button" class="tea" id="goTea"><span>☕</span>Tea</button>
+          <button type="button" class="gossip" id="goGossip"><span>👀</span>Gossip</button>
         </div>
 
         <div class="field" id="srcField" hidden>
@@ -1091,13 +1095,29 @@ document.querySelectorAll('.sheet-wrap').forEach(w=>w.addEventListener('click',e
 }));
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSheets(); });
 
+/* ---------- Phone back button ---------- */
+// Opening a screen adds one step to the browser history, so Back closes it instead of leaving the app
+let guarded=false;
+const isRoot=()=>!$('#feed').hidden && $('#camera').hidden && [...document.querySelectorAll('.sheet-wrap')].every(w=>w.hidden);
+function ensureGuard(){ if(!guarded && token && !isRoot()){ history.pushState({storyt:1},''); guarded=true; } }
+new MutationObserver(()=>ensureGuard()).observe($('#app'),{subtree:true,attributes:true,attributeFilter:['hidden']});
+window.addEventListener('popstate',()=>{
+  guarded=false;
+  if(!$('#camera').hidden){ stopRec(true); closeCamera(); if(!draft.vid && draft.type==='tea') resetDraft(); }
+  else {
+    const open=['chatWrap','commentsWrap','creatorWrap','editWrap','notifWrap','postWrap'].map(id=>document.getElementById(id)).find(w=>!w.hidden);
+    if(open){ open.hidden=true; if(open.id==='chatWrap'){ clearInterval(chatTimer); chatWith=null; checkUnseen(); } }
+    else if($('#feed').hidden) show('feed');
+  }
+  ensureGuard();
+});
+
 /* ---------- Installable app ---------- */
 if('serviceWorker' in navigator){ navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
 
 /* ---------- Start ---------- */
 (async ()=>{
   try{ CFG=await api('/api/config'); }catch(e){}
-  if(CFG.storageOk===false){ const w=document.createElement('div'); w.className='check bad banner'; w.textContent='Setup needed: storage is not connected, so posts and accounts will be erased on the next update. Add a Railway Volume at /data.'; $('#app').appendChild(w); }
   if(token){ try{ const d=await api('/api/me',{noLogout:true}); me=d.me; enterApp(); return; }catch(e){ setToken(null); } }
   setAuthMode('signup'); showAuth();
 })();

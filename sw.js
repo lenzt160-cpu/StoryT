@@ -3,7 +3,7 @@
    - Posts, messages (/api) and videos (/media) always come live from the server
    - Shows push notifications and opens the right screen when one is tapped
    Change VERSION when you update the app so phones pick up the new files. */
-const VERSION = 'storyt-v3';
+const VERSION = 'storyt-v4';
 const SHELL = ['/', '/offline.html', '/manifest.json', '/icon-192.png', '/icon-512.png', '/icon.svg', '/mark.svg'];
 
 self.addEventListener('install', e => {
